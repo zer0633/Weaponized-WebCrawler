@@ -27,8 +27,7 @@ colorama.init(autoreset=True)
 ip = input("please supply the webpage url, eg  http://localhost ")
 os.mkdir(ip+"_Website")
 os.chdir(ip+"_Website")
-if "http://" not in ip:
-	ip = "http://"+ip
+
 
 	print(Fore.BLUE + "---------------------------------------------------------------------------------------------------------\n\n")
 	print(Fore.RED + """
