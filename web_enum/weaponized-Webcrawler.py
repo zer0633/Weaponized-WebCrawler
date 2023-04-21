@@ -155,8 +155,8 @@ print(Fore.BLUE + "-------------------------------------------------------------
 print(Fore.RED + "now starting stage 2, checking for hidden content\n")
 
 
-filelist = ("/usr/share/SecLists/Discovery/Web-Content/raft-medium-files.txt") # <-- change this to a files list you want to use
-dirlist = ("/usr/share/SecLists/Discovery/Web-Content/raft-medium-directories.txt") # change this to a directories list you want to use
+filelist = ("raft-medium-files.txt") # <-- change this to a files list you want to use
+dirlist = ("raft-medium-directories.txt") # change this to a directories list you want to use
 # Open wordlists and turn them into lists
 with open(filelist) as f:
     files = [word.strip() for word in f]
